@@ -1,0 +1,97 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ClassAssignments
+{
+    internal class CSharpHackathon1a
+    {
+        public static string TakeInputString()
+        {
+            Console.WriteLine("Enter the string: ");
+            string InpString = Console.ReadLine();
+            return InpString;
+        }
+
+
+        public static string[] CleanUp(string s)
+        {
+            string[] words = s.ToLower().Split(' ');
+            List<string> cleanedWords = new List<string>();
+
+            foreach (string word in words)
+            {
+                string cleanedWord = "";
+                foreach (char c in word)
+                {
+                    if (c >= 'a' && c <= 'z')
+                    {
+                        cleanedWord += c;
+                    }
+                }
+                if (cleanedWord.Length > 0)
+                {
+                    cleanedWords.Add(cleanedWord);
+                }
+            }
+
+            return cleanedWords.ToArray();
+        }
+
+
+        public static void print(Dictionary<string, int> keyValuePairs)
+        {
+            if (keyValuePairs.Count == 0)
+            {
+                Console.WriteLine(0);
+                return;
+            }
+
+            List<KeyValuePair<string, int>> sortedList = new List<KeyValuePair<string, int>>(keyValuePairs);
+
+            sortedList.Sort((pair1, pair2) =>
+            {
+                if (pair1.Value != pair2.Value)
+                    return pair2.Value.CompareTo(pair1.Value);
+                else
+                    return pair2.Key.CompareTo(pair1.Key);
+            });
+
+            foreach (var pair in sortedList)
+            {
+                Console.WriteLine($"{pair.Value} {pair.Key}");
+            }
+        }
+
+
+        public static void CalculateFrequency(Dictionary<string, int> keyValuePairs, string[] cleaned)
+        {
+            for (int i = 0; i < cleaned.Length; i++)
+            {
+                if (!keyValuePairs.ContainsKey(cleaned[i]))
+                {
+                    keyValuePairs.Add(cleaned[i], 1);
+                }
+                else
+                {
+                    keyValuePairs[cleaned[i]]++;
+                }
+            }
+        }
+
+        public static void WordFrequencyCounter()
+        {
+            string InpString = TakeInputString();
+            string[] cleaned = CleanUp(InpString);
+            Dictionary<string, int> keyValuePairs = new Dictionary<string, int>();
+            CalculateFrequency(keyValuePairs, cleaned);
+            print(keyValuePairs);
+        }
+        static void Main(string[] args)
+        {
+            WordFrequencyCounter();
+        }
+    }
+}
