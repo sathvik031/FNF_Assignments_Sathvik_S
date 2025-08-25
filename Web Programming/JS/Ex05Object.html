@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+<body>
+    <script>
+        //Singleton objects in JS allows to create objects directly without
+        const emp = {
+            empId : 123,
+            empName : "Boogeyman",
+            empAddress : "Bangalore"
+        }// An object internally is  a dictionary in JS
+        console.log(typeof(emp))
+        console.log(emp);
+
+        emp.empSalary = 100000
+        // display all the properties in a loop
+        for(key in emp){
+            console.log(`The property name: ${key} and the value: ${emp[key]}`);
+        }
+
+        const temp = emp;
+        temp.empAddress = "Mysore";
+        console.log(emp.empAddress); //Reflects on all the objects.
+
+        //Before the keyword Class was created
+        const employee = function(id, name, address){
+            this.EmpID = id;
+            this.EmpName = name;
+            this.EmpLocation = address;
+        }
+
+        const e1 = new employee(123, "Lisa", "Mysore")
+        console.log(`Mr./Ms. ${e1.EmpName} is from ${e1.EmpLocation} with an ID as ${e1.EmpID}`);
+        const e2 = new employee(e1.EmpID, e1.EmpName, e1.EmpLocation);
+        e2.EmpLocation = "Mangalore";
+        console.log(`First guy's location: ${e1.EmpLocation} and the Second Guy's location: ${e2.EmpLocation}`);
+
+        ////////////// ES6 Syntax for creating classes and objects /////////////////
+        class Customer {
+            constructor(id, name, address, billAmount){
+                this.id = id;
+                this.name = name;
+                this.address = address;
+                this.billAmount = billAmount
+            }
+
+            display(){
+                console.log(`${this.name} has ordered items worth ${this.billAmount} to be delivered at ${this.address}`);
+            }
+
+            addBillAmount = (amount) => this.billAmount+= amount
+        }
+
+        const cst = new Customer(123, "Rajesh", "Chennai", 5600)
+        cst.display();
+        cst.addBillAmount(3000);
+        cst.display();
+    </script>
+</body>
+</html>

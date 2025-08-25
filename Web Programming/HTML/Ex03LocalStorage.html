@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+</head>
+<style>
+    div {
+        border: 2px dashed blue;
+        width: 40%;
+        padding: 10px;
+        display: inline-block;
+        margin: 20px;
+    }
+</style>
+
+<body>
+    <form action="">
+        <div>
+            <h2>User INput</h2>
+            <p>
+                <input type="text" id="name" placeholder="Name">
+                <input type="email" id="email" placeholder="Email">
+                <input type="date" id="dob">
+            </p>
+            <button id="btnSave">Save</button>
+        </div>
+        <div id="divDisplay">
+
+        </div>
+    </form>
+</body>
+<script>
+    window.addEventListener("load", function () {
+        let div = document.getElementById("divDisplay");
+        if (localStorage.getItem("userInfo") != null) {
+            div.innerText = localStorage.getItem("userInfo");
+        } else {
+            div.innerText = "No User info found.";
+        }
+        document.getElementById("btnSave").addEventListener("click", ()=>{
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let dob = document.getElementById("dob").value;
+            let msg = `Name: ${name}, Email: ${email}, dob: ${dob}`;
+
+            localStorage.setItem("userInfo", msg);
+
+        });
+    }
+)
+</script>
+
+</html>

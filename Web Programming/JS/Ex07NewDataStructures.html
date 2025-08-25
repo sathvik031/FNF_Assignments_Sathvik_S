@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function setExample(){
+            let set = new Set(); //set workslike array but stores only unique data.
+            set.add("Item1");
+            if(set.has("Item1")){
+                console.log("Item already exists");
+            } else {
+                set.add("Item1");
+            }
+            return set;
+        }
+        
+        //map stores the data as key-value pairs where key is unique.
+        function mapExample(){
+            const items = new Map();
+            items.set("Apples", 50);
+            items.set("Mango", 140);
+            items.set("Banana", 40);
+            items.set("Pomogranate", 250);
+            console.log(items.has("Banana"));
+            // for(let item of items){ // for of used on a map always return an array not an object
+            //     console.log(`Key : ${item[0]} , Value: ${item[1]}`);
+            // }
+            for( const [key, value] of items){
+                console.log(`Key: ${key} , Value: ${value}`);
+            }
+        }
+        mapExample();
+        const data = setExample();
+        window.addEventListener("load", function(){
+            const div = document.querySelector("div");
+            let strContent = "<h2>List of items: </h2>"
+            for(const item of data){
+                strContent += `<li>${item}</li>`
+            }
+            div.innerHTML = strContent
+        })
+    </script>
+    <div>
+
+    </div>
+</body>
+</html>

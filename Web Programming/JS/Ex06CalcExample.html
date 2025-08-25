@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .calc-card {
+        max-width: 400px;
+        margin: 40px auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+
+    .calc-card h2 {
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .calc-card input,
+    .calc-card select {
+        width: 90%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .calc-card button {
+        padding: 10px 20px;
+        border: 3px solid rgb(7, 114, 31);
+        background-color: white;
+        color: black;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .calc-card button:hover {
+        background-color: rgb(42, 191, 104);
+        color: white;
+    }
+
+    #spDisplay {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px;
+        border: 3px solid rgb(42, 191, 104);
+        color: black;
+        min-width: 100px;
+        font-weight: bold;
+        background-color: #fff;
+        border-radius: 5px;
+    }
+</style>
+
+<body>
+    <script>
+        //Html element can be programmatically referred using DOM.
+        //Document Object Model is a tree structure of the html elements. They can be itterated and traveresed using nodes, parents, children, siblings etc.
+        //HTML comes with api to access the emements by id, className, ElementName. Id must be unique in the document.
+        function compute(v1, v2, option) {
+            switch (option) {
+                case "Add": return v1 + v2
+                case "Substract": return v1 - v2
+                case "Multiply": return v1 * v2
+                case "Divide": return v1 / v2
+                default: return 0
+            }
+
+        }
+        window.addEventListener("load", function () {
+            //called after the page is loaded into the browser.
+            const btn = document.getElementById("btnGet");
+            if (btn == undefined) {
+                console.log("btn id is wrong");
+                return
+            }
+
+            btn.addEventListener("click", function () {
+                const v1 = parseFloat(document.getElementById("firstValue").value);
+                const v2 = parseFloat(document.getElementById("secondValue").value);
+                const option = document.getElementById("slOption").value;
+                const result = compute(v1, v2, option);
+                const sp = document.getElementById("spDisplay");
+                sp.innerText = "The result: " + result
+
+            });
+
+        });
+    </script>
+
+    <div class="calc-card">
+        <h2>Calc Program</h2>
+        <hr>
+
+        <p><input type="number" placeholder="First Value" id="firstValue" required></p>
+        <p>
+            <select id="slOption">
+                <option>---Select Option---</option>
+                <option>Add</option>
+                <option>Substract</option>
+                <option>Multiply</option>
+                <option>Divide</option>
+            </select>
+        </p>
+        <p><input type="number" id="secondValue" placeholder="Second Value" required></p>
+        <p>
+            <button id="btnGet"><strong>Get Result</strong></button>
+        </p>
+        <p>
+            <span id="spDisplay"></span>
+        </p>
+    </div>
+
+</body>
+
+</html>

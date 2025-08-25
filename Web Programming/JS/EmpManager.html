@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmpManager</title>
+    <script src="./Ex07empManager.js"></script>
+    <script src="./htmlHelper.js"></script>
+    <link rel="stylesheet" type="text/css" href="./empManager.css">
+    <script>
+        const mgr = new EmployeeRepo();
+
+        function mapEvents() {
+            const addBtn = finder("addBtn");
+            const updateBtn = finder("updateBtn");
+
+            addBtn.addEventListener("click", addRecord);
+            updateBtn.addEventListener("click", updateRecord);
+        }
+
+        function addRecord() {
+            const id = finder("empId").value;
+            const name = finder("empName").value;
+            const address = finder("empAddress").value;
+            const sal = finder("empSalary").value;
+
+            const emp = new Employee(id, name, address, sal);
+            mgr.addEmp(emp);
+
+            alert("Employee added successfully");
+            displayRecords();
+        }
+
+        function updateRecord() {
+            const id = finder("empId").value;
+            const name = finder("empName").value;
+            const address = finder("empAddress").value;
+            const sal = finder("empSalary").value;
+
+            const emp = new Employee(id, name, address, sal);
+            mgr.updateEmp(emp);
+
+            alert("Employee updated successfully");
+            displayRecords();
+        }
+
+        function displayRecords() {
+            const d1 = finder("display");
+            const employees = mgr.getAll();
+
+            if (employees.length === 0) {
+                d1.innerHTML = "<p>No employees found.</p>";
+                return;
+            }
+
+            let html = `<table border="1" cellpadding="5" style="width:100%; border-collapse: collapse;">
+        <tr>
+            <th>ID</th><th>Name</th><th>Address</th><th>Salary</th>
+        </tr>`;
+
+            for (const emp of employees) {
+                html += `<tr>
+            <td>${emp.id}</td>
+            <td>${emp.name}</td>
+            <td>${emp.address}</td>
+            <td>${emp.salary}</td>
+        </tr>`;
+            }
+
+            html += `</table>`;
+            d1.innerHTML = html;
+        }
+
+
+
+        window.addEventListener("load", mapEvents);
+    </script>
+</head>
+
+<body>
+    <h1>Employee Management Software</h1>
+    <hr>
+    <article>
+        <div class="container">
+            <nav>
+                <a href="#">View All</a>
+                <a href="#">Add new</a>
+            </nav>
+            <div class="subContainer">
+                <div>
+                    <h2>Table of Employees</h2>
+                    <hr>
+                    <pre id="display"
+                        style="margin-top: 20px; background-color: #fff8f0; padding: 10px; border: 1px solid lightcoral; border-radius: 10px;"></pre>
+                </div>
+                <div class="Details">
+                    <h2>Emp Details</h2>
+                    <hr>
+                    <p><input type="number" id="empId" placeholder="Employee Id"></p>
+                    <p><input type="text" id="empName" placeholder="Employee Name"></p>
+                    <input type="text" id="empAddress" placeholder="Employee Address">
+                    <input type="number" id="empSalary" placeholder="Employee Salary">
+                    <p style="text-align: center">
+                        <button id="addBtn">Add Record</button> <button id="updateBtn">Update Record</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </article>
+</body>
+
+</html>

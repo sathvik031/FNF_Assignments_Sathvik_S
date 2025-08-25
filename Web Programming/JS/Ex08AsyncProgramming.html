@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function testMe(){
+        //     console.log("Test me function ran");
+        // }
+        // setTimeout(testMe, 3000);
+        // console.log("This is the last line of code");
+
+        //How to create our own set of delayed functions ///////
+        function fetchData(callback){
+            setTimeout(() => {
+                const data = [
+                    {name : "John", age : 21},
+                    {name : "Lisa", age : 22},
+                    {name : "Mary", age : 23},
+                    {name : "Dwane", age : 18}
+                ]
+                callback(data)
+            }, 5000)
+        }
+
+        console.log("Calling fetch data");
+        fetchData((result) => {
+            console.log("Got result from fetch data");
+            for (const item of result) {
+                console.log(item);
+            }
+        });
+        console.log("end of the program");
+    </script>
+</body>
+</html>

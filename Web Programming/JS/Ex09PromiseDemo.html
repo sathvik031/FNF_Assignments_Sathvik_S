@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromiseDemo</title>
+</head>
+
+<body>
+    <script>
+        //Promise is JS obj that handles async programming in a more understandable manner.
+        //Every Promise object will have a callback function that takes 2 args:
+        //Resolve and reject. The resolve function will be called when the operation is completed without any issues. Reject is called when there is an issue(Error).
+        //Async and await works with Promise object only.
+        //Every Promise object shall have a function called then, which will be called when the code is successfull or completed.
+        function getAllRecords() {
+            //This code shall make a backend call and get the data to us
+            return new Promise(function (resolve, reject) {
+                setTimeout(() => {
+                    const data = [
+                        { name: "John", age: 21 },
+                        { name: "Lisa", age: 22 },
+                        { name: "Mary", age: 23 },
+                        { name: "Dwane", age: 18 }
+                    ]
+                    if(data[0].name != "Sathvik")
+                        reject("The records are not matching")
+                    else
+                        resolve(data)
+                }, 5000)
+            })
+        }
+
+        function CallWithoutAsync(){
+            console.log("Into the Call function");
+            getAllRecords()
+            .then( records =>{
+                 console.log(JSON.stringify(records));
+                 console.log("End of function call");
+            })
+            .catch(err => console.error(err));
+        }
+
+        async function InvokeFunc(){
+            console.log("Into invoke Func");
+            const records = await getAllRecords();
+            console.log(JSON.stringify(records));
+            console.log("After all the records are displayed ");
+        }
+
+        // InvokeFunc();
+        CallWithoutAsync();
+    </script>
+</body>
+
+</html>

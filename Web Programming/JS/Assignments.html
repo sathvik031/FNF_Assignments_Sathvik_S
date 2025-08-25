@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container1, .container2 {
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .outerDiv{
+            display: flex;
+            /* gap: 20%; */
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+    <script src="./Assignments.js"></script>
+</head>
+
+<body>
+    <div class="outerDiv">
+        <div class="container1">
+            <h2>Sign up / Sign In</h2>
+            <form action="./Landing.html" method="get">
+                <input type="text" placeholder="Username" required id="username">
+                <input type="password" placeholder="Password" required id="password">
+                <div class="button-group">
+                    <button type="button" id="signInBtn">Sign In</button>
+                    <button type="button" id="signUpBtn">Sign Up</button>
+                </div>
+                <div class="display">
+
+                </div>
+            </form>
+        </div>
+
+        <div class="container2">
+                <div class="displayUsers">
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+<script>
+
+    window.addEventListener("load", () => {
+        const signUpBtn = document.getElementById("signUpBtn");
+        const signInBtn = document.getElementById("signInBtn");
+        const usernameInput = document.getElementById("username");
+        const passwordInput = document.getElementById("password");
+        const displayDiv = document.querySelector(".display");
+        const form = document.querySelector("form");
+
+        const activeUsers = JSON.parse(localStorage.getItem("ActiveUsers")) || [];
+        let displayUsers = "<center><h3>Active Users</h3></center> <ul>";
+        if(activeUsers.length){
+            for (const user of activeUsers) {
+                const username = Object.keys(user)[0];
+                displayUsers += `<li> ${username} </li>`;
+            }
+            displayUsers += `</ul>`;
+        }
+        document.querySelector(".displayUsers").innerHTML = displayUsers;
+
+        function clear() {
+            usernameInput.value = ""
+            passwordInput.value = ""
+        }
+
+        signInBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+            const auth = signIn(username, password);
+            if (auth) {
+                displayDiv.innerHTML = `<h3>Sign In Successful!</h3>`;
+                form.submit();
+                clear();
+            } else {
+                displayDiv.innerHTML = `<h3>Sign In Failed: Incorrect username or password.</h3>`;
+                clear();
+            }
+        });
+
+        signUpBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+            const auth = signUp(username, password);
+            if (auth) {
+                displayDiv.innerHTML = `<h3>Sign Up Successful! Please sign in.</h3>`;
+                clear();
+            } else {
+                displayDiv.innerHTML = `<h3>Sign Up Failed: Username already exists or invalid.</h3>`;
+                clear();
+            }
+        });
+        console.log(signUpBtn, signInBtn);
+    });
+</script>
+
+</html>
