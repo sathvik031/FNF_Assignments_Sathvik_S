@@ -1,0 +1,199 @@
+{
+    "restaurants": [
+        {
+            "restaurant_id": 1,
+            "restaurant_name": "Tasty Bites",
+            "restaurant_address": "123 Main Street",
+            "restaurant_contact": "123-456-7890",
+            "menu": [
+                {
+                    "item_id": 101,
+                    "item_name": "Veg Burger",
+                    "item_price": 5.99,
+                    "item_photo": "veg_burger.jpg"
+                },
+                {
+                    "item_id": 102,
+                    "item_name": "Fries",
+                    "item_price": 2.99,
+                    "item_photo": "fries.jpg"
+                },
+                {
+                    "item_id": 103,
+                    "item_name": "Cheese Pizza",
+                    "item_price": 9.49,
+                    "item_photo": "cheese_pizza.jpg"
+                },
+                {
+                    "item_id": 104,
+                    "item_name": "Pasta Alfredo",
+                    "item_price": 7.99,
+                    "item_photo": "pasta_alfredo.jpg"
+                }
+            ]
+        },
+        {
+            "restaurant_id": 2,
+            "restaurant_name": "Spice Hub",
+            "restaurant_address": "456 Market Road",
+            "restaurant_contact": "987-654-3210",
+            "menu": [
+                {
+                    "item_id": 201,
+                    "item_name": "Chicken Curry",
+                    "item_price": 8.99,
+                    "item_photo": "chicken_curry.jpg"
+                },
+                {
+                    "item_id": 202,
+                    "item_name": "Naan",
+                    "item_price": 1.99,
+                    "item_photo": "naan.jpg"
+                },
+                {
+                    "item_id": 203,
+                    "item_name": "Mutton Biryani",
+                    "item_price": 11.99,
+                    "item_photo": "mutton_biryani.jpg"
+                },
+                {
+                    "item_id": 204,
+                    "item_name": "Paneer Butter Masala",
+                    "item_price": 9.49,
+                    "item_photo": "paneer_butter_masala.jpg"
+                }
+            ]
+        },
+        {
+            "restaurant_id": 3,
+            "restaurant_name": "Green Delight",
+            "restaurant_address": "789 Lakeview Avenue",
+            "restaurant_contact": "222-333-4444",
+            "menu": [
+                {
+                    "item_id": 301,
+                    "item_name": "Caesar Salad",
+                    "item_price": 6.49,
+                    "item_photo": "caesar_salad.jpg"
+                },
+                {
+                    "item_id": 302,
+                    "item_name": "Quinoa Bowl",
+                    "item_price": 7.99,
+                    "item_photo": "quinoa_bowl.jpg"
+                },
+                {
+                    "item_id": 303,
+                    "item_name": "Smoothie Mix",
+                    "item_price": 4.49,
+                    "item_photo": "smoothie_mix.jpg"
+                },
+                {
+                    "item_id": 304,
+                    "item_name": "Grilled Veg Wrap",
+                    "item_price": 5.99,
+                    "item_photo": "grilled_veg_wrap.jpg"
+                }
+            ]
+        },
+        {
+            "restaurant_id": 4,
+            "restaurant_name": "Ocean Treats",
+            "restaurant_address": "222 Harbor Street",
+            "restaurant_contact": "666-777-8888",
+            "menu": [
+                {
+                    "item_id": 401,
+                    "item_name": "Grilled Fish",
+                    "item_price": 12.99,
+                    "item_photo": "grilled_fish.jpg"
+                },
+                {
+                    "item_id": 402,
+                    "item_name": "Prawn Masala",
+                    "item_price": 13.99,
+                    "item_photo": "prawn_masala.jpg"
+                },
+                {
+                    "item_id": 403,
+                    "item_name": "Crab Curry",
+                    "item_price": 15.49,
+                    "item_photo": "crab_curry.jpg"
+                },
+                {
+                    "item_id": 404,
+                    "item_name": "Fish Fry",
+                    "item_price": 9.99,
+                    "item_photo": "fish_fry.jpg"
+                }
+            ]
+        }
+    ],
+    "users": [
+        {
+            "user_name": "Alice",
+            "user_phoneNo": "555-1234",
+            "user_address": "789 Elm Street"
+        },
+        {
+            "user_name": "Bob",
+            "user_phoneNo": "555-5678",
+            "user_address": "321 Oak Avenue"
+        },
+        {
+            "user_name": "Charlie",
+            "user_phoneNo": "555-8765",
+            "user_address": "654 Pine Lane"
+        },
+        {
+            "user_name": "Diana",
+            "user_phoneNo": "555-4321",
+            "user_address": "987 Maple Boulevard"
+        }
+    ],
+    "cart": {
+        "items": [
+            {
+                "item_id": 101,
+                "quantity": 2,
+                "subtotal": 11.98
+            },
+            {
+                "item_id": 102,
+                "quantity": 1,
+                "subtotal": 2.99
+            },
+            {
+                "item_id": 201,
+                "quantity": 1,
+                "subtotal": 8.99
+            },
+            {
+                "item_id": 202,
+                "quantity": 3,
+                "subtotal": 5.97
+            }
+        ],
+        "total_price": 29.93
+    },
+    "billing": {
+        "bill_id": 1,
+        "payment_method": "UPI",
+        "billing_date": "2025-09-08T10:00:00",
+        "total_amount": 29.93
+    },
+    "billing_history": [
+        {
+            "bill_id": 2,
+            "payment_method": "Credit Card",
+            "billing_date": "2025-09-06T15:30:00",
+            "total_amount": 45.50
+        },
+        {
+            "bill_id": 3,
+            "payment_method": "Cash",
+            "billing_date": "2025-09-07T18:15:00",
+            "total_amount": 22.99
+        }
+    ]
+}

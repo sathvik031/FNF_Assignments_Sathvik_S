@@ -1,0 +1,53 @@
+<div class="container-fluid d-flex align-items-center justify-content-center vh-100 bg-light">
+  <div class="col-md-4">
+    <div class="card shadow-lg border-0 rounded-3">
+      <div class="card-header bg-primary text-white text-center">
+        <h2 class="mb-0 d-flex justify-content-center align-items-center">
+          <i class="fas fa-user-lock me-2"></i> Login
+        </h2>
+      </div>
+      <div class="card-body p-4">
+        <form (ngSubmit)="onLogin()">
+          
+          <div class="mb-3">
+            <label class="form-label fw-semibold">
+              <i class="fas fa-user me-2 text-primary"></i> Username
+            </label>
+            <input 
+              type="text" 
+              [(ngModel)]="username" 
+              name="username" 
+              required 
+              class="form-control shadow-sm"
+              placeholder="Enter your username">
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label fw-semibold">
+              <i class="fas fa-lock me-2 text-primary"></i> Password
+            </label>
+            <input 
+              type="password" 
+              [(ngModel)]="password" 
+              name="password" 
+              required 
+              class="form-control shadow-sm"
+              placeholder="Enter your password">
+          </div>
+          
+          <div class="d-grid mb-3">
+            <button type="submit" class="btn btn-primary btn-lg shadow-sm">
+              <i class="fas fa-sign-in-alt me-2"></i> Login
+            </button>
+          </div>
+          
+          <div *ngIf="errorMessage" class="alert alert-danger text-center">
+            <i class="fas fa-exclamation-circle me-2"></i>
+            {{ errorMessage }}
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
