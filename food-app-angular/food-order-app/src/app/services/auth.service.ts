@@ -15,7 +15,6 @@ export class AuthService {
   }
 
   login(username: string, password: string): boolean {
-    // Simple validation - in real app, validate against backend
     if (username && password) {
       localStorage.setItem('currentUser', JSON.stringify({ username, loginTime: new Date() }));
       this.isLoggedInSubject.next(true);
